@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nebojsa Vilus – Web Developer Portfolio</title>
+<meta name="description" content="Senior web developer with 15+ years of experience in WordPress, Craft CMS, Shopify and headless Next.js builds for US digital agencies.">
+<meta property="og:title" content="Nebojsa Vilus – Web Developer Portfolio">
+<meta property="og:description" content="WordPress, Craft CMS, Shopify and headless Next.js work for US digital agencies.">
+<meta property="og:image" content="images/morae.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f4f7fa;
+    --ink: #1d2733;
+    --muted: #5b6673;
+    --accent: #2d6a4f;
+    --accent-soft: #e2f0e8;
+    --line: #dbe2ea;
+    --shadow: 0 1px 2px rgba(20, 35, 50, .06), 0 8px 24px rgba(20, 35, 50, .07);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #11161c;
+      --surface: #19212a;
+      --ink: #e6ebf0;
+      --muted: #9aa6b2;
+      --accent: #74c69d;
+      --accent-soft: #1b3a2d;
+      --line: #2a3440;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .25);
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Inter", "Noto Sans", Arial, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.6; font-size: 16px; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  /* Hero */
+  .hero { padding: 72px 0 56px; border-bottom: 1px solid var(--line); }
+  .hero-inner { display: flex; gap: 36px; align-items: center; }
+  .photo { width: 148px; height: 148px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 4px solid var(--accent-soft); }
+  .hero h1 { font-size: clamp(32px, 5vw, 46px); line-height: 1.1; letter-spacing: -0.02em; }
+  .hero .role { color: var(--accent); font-weight: 600; font-size: 18px; margin-top: 8px; }
+  .hero p.intro { color: var(--muted); max-width: 640px; margin-top: 14px; font-size: 17px; }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 16px; font-size: 14px; color: var(--muted); }
+  .facts span::before { content: "•"; color: var(--accent); margin-right: 8px; }
+  .facts span:first-child::before { content: none; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .btn { display: inline-block; padding: 10px 18px; border-radius: 8px; font-weight: 600; font-size: 15px; text-decoration: none; border: 1px solid var(--accent); }
+  .btn.primary { background: var(--accent); color: var(--bg); }
+  .btn.ghost { color: var(--accent); }
+  .btn:hover { opacity: .88; }
+
+  /* Sections */
+  section { padding: 56px 0; }
+  section + section { border-top: 1px solid var(--line); }
+  .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: 13px; font-weight: 700; color: var(--accent); }
+  h2 { font-size: 28px; letter-spacing: -0.01em; margin-top: 6px; }
+  .lead { color: var(--muted); margin-top: 8px; max-width: 680px; }
+
+  /* Project cards */
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 28px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+  .card .shot { display: block; aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--line); }
+  .card .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform .4s ease; }
+  .card .shot:hover img { transform: scale(1.03); }
+  .card .body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+  .card h3 { font-size: 20px; }
+  .card .meta { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .card p { margin-top: 10px; font-size: 15px; }
+  .card ul { margin: 10px 0 0 18px; font-size: 15px; }
+  .card li { margin-bottom: 4px; }
+  .card li::marker { color: var(--accent); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .tag { background: var(--accent-soft); color: var(--accent); font-size: 12.5px; font-weight: 600; padding: 3px 10px; border-radius: 99px; }
+  .card .link { margin-top: auto; padding-top: 16px; font-weight: 600; font-size: 15px; text-decoration: none; }
+  .card .link:hover { text-decoration: underline; }
+  .grid.three { grid-template-columns: repeat(3, 1fr); }
+  .grid.three .card h3 { font-size: 18px; }
+
+  /* Lists */
+  .also { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-top: 24px; }
+  .also div { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  .also strong { display: block; font-size: 15px; }
+  .also span { font-size: 13.5px; color: var(--muted); }
+
+  .skills { display: grid; grid-template-columns: 180px 1fr; gap: 12px 24px; margin-top: 24px; }
+  .skills dt { font-weight: 600; }
+  .skills dd { color: var(--muted); }
+
+  .note { margin-top: 18px; font-size: 13.5px; color: var(--muted); }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 0 56px; }
+  footer .row { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  footer p { color: var(--muted); font-size: 14px; }
+
+  @media (max-width: 860px) {
+    .grid.three { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 680px) {
+    .hero { padding: 44px 0 40px; }
+    .hero-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .photo { width: 112px; height: 112px; }
+    .grid, .grid.three { grid-template-columns: 1fr; }
+    .skills { grid-template-columns: 1fr; gap: 2px; }
+    .skills dd { margin-bottom: 12px; }
+    section { padding: 40px 0; }
+    .wrap { padding: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <img class="photo" src="images/photo.jpg" alt="Nebojsa Vilus">
+    <div>
+      <h1>Nebojsa Vilus</h1>
+      <div class="role">Senior Web Developer · WordPress · Craft CMS</div>
+      <p class="intro">15+ years building and maintaining websites for US digital agencies and their clients. I turn designs into fast, responsive sites on WordPress, Craft CMS, Shopify and other CMS platforms, and contribute to headless builds with Next.js.</p>
+      <div class="facts">
+        <span>Serbia (CET)</span>
+        <span>Open to remote</span>
+        <span>English B2</span>
+      </div>
+      <div class="buttons">
+        <a class="btn primary" href="mailto:nvilus@gmail.com">nvilus@gmail.com</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/nvilus/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="#work">See my work ↓</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="work">
+  <div class="wrap">
+    <div class="eyebrow">Featured work</div>
+    <h2>Selected projects</h2>
+    <p class="lead">WordPress and Shopify development, ongoing maintenance, third-party integrations and migration work.</p>
+
+    <div class="grid">
+      <article class="card">
+        <a class="shot" href="https://www.morae.com/" target="_blank" rel="noopener"><img src="images/morae.jpg" alt="Morae website homepage" loading="lazy"></a>
+        <div class="body">
+          <h3>Morae</h3>
+          <div class="meta">Legal technology company · for Kadeau</div>
+          <ul>
+            <li>Ongoing WordPress development and maintenance</li>
+            <li>Website forms integrated with Salesforce Pardot</li>
+            <li>Contributing to the migration to a headless Craft CMS + Next.js setup</li>
+          </ul>
+          <div class="tags"><span class="tag">WordPress</span><span class="tag">Salesforce Pardot</span><span class="tag">Content migration</span><span class="tag">Next.js</span></div>
+          <a class="link" href="https://www.morae.com/" target="_blank" rel="noopener">Visit live site →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="shot" href="https://www.thehardscapeexchange.com/" target="_blank" rel="noopener"><img src="images/hardscape.jpg" alt="The Hardscape Exchange online store homepage" loading="lazy"></a>
+        <div class="body">
+          <h3>The Hardscape Exchange</h3>
+          <div class="meta">E-commerce · for Kadeau</div>
+          <p>Custom Shopify theme built with Liquid, CSS/SCSS and Webpack 5.</p>
+          <div class="tags"><span class="tag">Shopify</span><span class="tag">Liquid</span><span class="tag">SCSS</span><span class="tag">Webpack</span></div>
+          <a class="link" href="https://www.thehardscapeexchange.com/" target="_blank" rel="noopener">Visit live site →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="cms">
+  <div class="wrap">
+    <div class="eyebrow">Craft CMS · Headless</div>
+    <h2>Other selected work</h2>
+    <p class="lead">Craft CMS, Shopify and headless Next.js projects, many with custom plugins and third-party integrations.</p>
+
+    <div class="grid three">
+      <article class="card">
+        <a class="shot" href="https://www.nti.llc/" target="_blank" rel="noopener"><img src="images/nti.jpg" alt="NTI website homepage" loading="lazy"></a>
+        <div class="body">
+          <h3>NTI</h3>
+          <div class="meta">National Technology Integrators · for Kadeau</div>
+          <p>Headless website with Craft CMS and a Next.js front-end.</p>
+          <div class="tags"><span class="tag">Headless</span><span class="tag">Craft CMS</span><span class="tag">Next.js</span></div>
+          <a class="link" href="https://www.nti.llc/" target="_blank" rel="noopener">Visit live site →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="shot" href="https://www.m3comva.com/" target="_blank" rel="noopener"><img src="images/m3com.jpg" alt="M3COM website homepage" loading="lazy"></a>
+        <div class="body">
+          <h3>M3COM</h3>
+          <div class="meta">Telecom · for Kadeau</div>
+          <p>Headless website with Craft CMS and a Next.js front-end, built as part of the development team.</p>
+          <div class="tags"><span class="tag">Headless</span><span class="tag">Craft CMS</span><span class="tag">Next.js</span></div>
+          <a class="link" href="https://www.m3comva.com/" target="_blank" rel="noopener">Visit live site →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="shot" href="https://www.brookstein.co/" target="_blank" rel="noopener"><img src="images/brookstein.jpg" alt="Brookstein website homepage" loading="lazy"></a>
+        <div class="body">
+          <h3>Brookstein</h3>
+          <div class="meta">Hardscaping &amp; landscaping · for Kadeau</div>
+          <p>Headless website with Craft CMS and a Next.js front-end.</p>
+          <div class="tags"><span class="tag">Headless</span><span class="tag">Craft CMS</span><span class="tag">Next.js</span></div>
+          <a class="link" href="https://www.brookstein.co/" target="_blank" rel="noopener">Visit live site →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="shot" href="https://www.defaziollc.com/" target="_blank" rel="noopener"><img src="images/defazio.jpg" alt="DeFazio website homepage" loading="lazy"></a>
+        <div class="body">
+          <h3>DeFazio</h3>
+          <div class="meta">Electrical manufacturers' representatives · for Kadeau</div>
+          <p>Craft CMS website with custom HTML, CSS and JavaScript front-end.</p>
+          <div class="tags"><span class="tag">Craft CMS</span><span class="tag">HTML/CSS/JS</span></div>
+          <a class="link" href="https://www.defaziollc.com/" target="_blank" rel="noopener">Visit live site →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="shot" href="https://web.archive.org/web/20210211012417/https://www.skysonginnovations.com/" target="_blank" rel="noopener"><img src="images/skysong.jpg" alt="SkySong Innovations website homepage" loading="lazy"></a>
+        <div class="body">
+          <h3>SkySong Innovations</h3>
+          <div class="meta">Arizona State University tech transfer · for Kadeau</div>
+          <p>Custom Craft CMS templates, integration with Inteum Technology Publisher, Algolia instant search, and custom plugins for search alerts and stalled-task notifications.</p>
+          <div class="tags"><span class="tag">Craft CMS</span><span class="tag">Algolia</span><span class="tag">API integration</span></div>
+          <a class="link" href="https://web.archive.org/web/20210211012417/https://www.skysonginnovations.com/" target="_blank" rel="noopener">View archived version →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <a class="shot" href="https://www.pinkstondigital.com/" target="_blank" rel="noopener"><img src="images/pinkston.jpg" alt="Pinkston Digital website homepage" loading="lazy"></a>
+        <div class="body">
+          <h3>Pinkston Digital</h3>
+          <div class="meta">Digital agency website</div>
+          <p>Craft CMS website with custom HTML, CSS and JavaScript front-end.</p>
+          <div class="tags"><span class="tag">Craft CMS</span><span class="tag">HTML/CSS/JS</span></div>
+          <a class="link" href="https://www.pinkstondigital.com/" target="_blank" rel="noopener">Visit live site →</a>
+        </div>
+      </article>
+    </div>
+
+    <h3 style="margin-top:44px; font-size:18px;">Also worked on</h3>
+    <div class="also">
+      <div><strong>Hidden Scar</strong><span>WordPress · Pinkston Digital</span></div>
+      <div><strong>Fresh Connections Catering</strong><span>Craft CMS · Kadeau</span></div>
+      <div><strong>Four Inc.</strong><span>Craft CMS · Pinkston Digital</span></div>
+      <div><strong>Excelacom</strong><span>Craft CMS · Pinkston Digital</span></div>
+      <div><strong>Naviance</strong><span>Craft CMS · Pinkston Digital</span></div>
+      <div><strong>Americans for Hope, Growth, and Opportunity</strong><span>Craft CMS · Pinkston Digital</span></div>
+    </div>
+
+    <p class="note">Some live sites have been redesigned or updated by other teams since my work on them; archived links show the versions I built.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow">Skills</div>
+    <h2>What I work with</h2>
+    <dl class="skills">
+      <dt>CMS &amp; platforms</dt><dd>WordPress (themes, plugins, customization), Craft CMS (custom plugins &amp; modules), Shopify (Liquid), headless CMS</dd>
+      <dt>Front-end</dt><dd>HTML5, CSS3, Sass/SCSS, Tailwind CSS, JavaScript, jQuery, React, Next.js, Twig, Webpack</dd>
+      <dt>Back-end</dt><dd>PHP, MySQL, third-party API integrations (Salesforce Pardot, Algolia, Inteum Technology Publisher)</dd>
+      <dt>Design to code</dt><dd>Figma, PSD and Adobe XD to pixel-perfect, responsive, cross-browser websites</dd>
+      <dt>AI-assisted development</dt><dd>Claude Code and Cursor in daily work for faster development, debugging and testing</dd>
+      <dt>Quality &amp; ops</dt><dd>Technical SEO, performance and page speed, QA and pre-release testing, AWS hosting, deployments, Git</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="writing">
+  <div class="wrap">
+    <div class="eyebrow">Writing</div>
+    <h2>Published article</h2>
+    <p class="lead"><a href="https://www.pinkstondigital.com/how-to-optimize-web-site-in-craft-cms-for-performance/" target="_blank" rel="noopener"><strong>Performance Optimization for Websites Built With Craft</strong></a> — Pinkston Digital blog, April 2016.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap row">
+    <div>
+      <strong>Let's work together</strong>
+      <p>Available for remote, full-time or contract work with agencies and product teams.</p>
+    </div>
+    <div class="buttons" style="margin-top:0">
+      <a class="btn primary" href="mailto:nvilus@gmail.com">Email me</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/nvilus/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
